@@ -5,29 +5,18 @@ export default function About() {
   const revealRef = useReveal(0);
 
   return (
-    <section id="about" ref={revealRef} className="anim py-20 bg-background">
-      <div className="max-w-4xl mx-auto px-6">
-        <h3 className="text-4xl font-bold mb-8 text-center">About Me</h3>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              I&apos;m Michael from Naga, Bicol Region, Philippines. 
-              Currently learning Java and building my first full-stack projects. 
-              Passionate about clean code, problem solving, and creating useful apps.
+    <section id="about" className="py-24 bg-background text-foreground border-t border-gray-100 dark:border-gray-900">
+      <div ref={revealRef} className="anim max-w-4xl mx-auto px-6 text-center">
+        <h3 className="text-2xl font-bold mb-10 text-center">
+          About Me
+        </h3>
+        <div className="max-w-2xl mx-auto space-y-6 text-lg md:text-xl leading-relaxed font-light text-gray-800 dark:text-gray-200">
+            <p>
+                I&apos;m Michael, a developer based in the Philippines. I focus on building refined digital experiences with a clean, functional aesthetic.
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mt-6">
-              This portfolio was built with Next.js + Tailwind in just a few hours — 
-              proof that I can learn fast and ship things quickly!
+            <p>
+                Currently, I am specializing in the Java ecosystem (Spring Boot) while maintaining a strong interest in modern frontend frameworks like React and Next.js.
             </p>
-          </div>
-          <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl">
-            <h4 className="font-semibold mb-4">Currently learning:</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3">✅ Java + OOP</li>
-              <li className="flex items-center gap-3">✅ React / Next.js</li>
-              <li className="flex items-center gap-3">🔄 Spring Boot (next goal)</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
