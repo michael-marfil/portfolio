@@ -3,44 +3,60 @@ import { useReveal } from "@/hooks/use-reveal";
 
 export default function Projects() {
   const titleRef = useReveal(0);
-  const project1Ref = useReveal(100);
-  const project2Ref = useReveal(200);
+  const projects = [
+    {
+      title: "Java Console Portfolio",
+      tech: ["Java", "OOP", "CLI"],
+      year: "2024",
+      desc: "A command-line interface application demonstrating high-level OOP principles and system design."
+    },
+    {
+      title: "Modern Portfolio",
+      tech: ["Next.js", "Tailwind CSS", "Framer"],
+      year: "2026",
+      desc: "A high-performance personal brand site built with a focus on refined typography and smooth interactions."
+    }
+  ];
 
   return (
-    <section id="projects" className="py-20 bg-background text-foreground">
-      <div className="max-w-4xl mx-auto px-6">
-        <h3 ref={titleRef} className="anim text-4xl font-bold mb-12 text-center">My Projects</h3>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div ref={project1Ref} className="anim bg-gray-50 dark:bg-gray-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-              <span className="text-white text-6xl">☕</span>
-            </div>
-            <div className="p-6">
-              <h4 className="font-semibold text-xl mb-2">Java Console Portfolio</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                Simple command-line app that displays my profile info. Built while learning OOP.
-              </p>
-              <div className="flex gap-2">
-                <span className="text-xs bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full">Java</span>
+    <section id="projects" className="py-32 bg-background text-foreground relative overflow-hidden">
+      {/* Subtle Background Accent */}
+      <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full" />
+      
+      <div className="max-w-6xl mx-auto px-6">
+        <div ref={titleRef} className="anim mb-20 text-center">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.4em] text-blue-600 dark:text-blue-400 mb-4">Portfolio</h3>
+            <h2 className="text-4xl md:text-5xl font-bold">Featured Works.</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {projects.map((project, i) => (
+            <div key={project.title} className="group p-8 md:p-12 rounded-[2.5rem] bg-white dark:bg-[#111111] border border-gray-100 dark:border-gray-800/50 hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/5 cursor-pointer flex flex-col justify-between min-h-[400px]">
+              <div>
+                <div className="flex justify-between items-center mb-10">
+                    <span className="text-xs font-mono text-gray-400">{project.year}</span>
+                    <div className="flex gap-2">
+                        {project.tech.map(t => (
+                            <span key={t} className="text-[10px] uppercase tracking-widest px-3 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full text-gray-500">
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <h4 className="text-3xl md:text-4xl font-bold mb-6 group-hover:text-blue-600 transition-colors duration-300">
+                    {project.title}
+                </h4>
+                <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed font-light">
+                    {project.desc}
+                </p>
               </div>
-            </div>
-          </div>
 
-          <div ref={project2Ref} className="anim bg-gray-50 dark:bg-gray-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-48 bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
-              <span className="text-white text-6xl">🌐</span>
-            </div>
-            <div className="p-6">
-              <h4 className="font-semibold text-xl mb-2">This Portfolio</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                Built with Next.js + Tailwind in one sitting. Shows I can ship fast.
-              </p>
-              <div className="flex gap-2">
-                <span className="text-xs bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full">React</span>
-                <span className="text-xs bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full">Next.js</span>
+              <div className="mt-12 flex items-center gap-4 text-sm font-semibold group-hover:gap-6 transition-all duration-300">
+                <span>View Details</span>
+                <span className="text-blue-600">→</span>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
